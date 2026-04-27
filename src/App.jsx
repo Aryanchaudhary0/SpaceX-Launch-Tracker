@@ -27,11 +27,10 @@ export default App;*/
 
 import { Routes, Route } from "react-router-dom";
 import Navbar from "./Components/Navbar";
-import Home from "./pages/Home";
-import Launches from "./pages/Launches";
-import Rockets from "./pages/Rockets";
-
-import LaunchDetail from "./pages/LaunchDetails";
+import Home from "./Pages/Home";
+import Launches from "./Pages/Launches";
+import Rockets from "./Pages/Rockets";
+import LaunchDetail from "./Pages/LaunchDetails";
 
 
 function App() {
