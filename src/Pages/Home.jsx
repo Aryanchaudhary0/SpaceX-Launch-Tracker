@@ -1,15 +1,21 @@
-import { useMemo } from "react";
 import useFetch from "../Hooks/useFetch";
 import { formatDate } from "../Utils/formatDate";
 import { Link } from "react-router-dom";
 
 function Home() {
-const { data: launches, loading, error } = useFetch(
-  "https://api.spacexdata.com/v5/launches/past"
-);
-  console.log("HOME launches:", launches);
 
-const latest = launches?.[0];
+const { data: launches, loading, error } = useFetch(
+  "https://api.spacexdata.com/v5/launches"
+); 
+
+const latest = launches
+  ? launches
+      .filter(l => !l.upcoming)
+      .sort(
+        (a, b) => new Date(b.date_utc) - new Date(a.date_utc)
+      )[0]
+  : null;
+
   const upcoming = launches?.filter(l => l.upcoming);
   const past = launches?.filter(l => !l.upcoming);
   const successRate = past
@@ -49,7 +55,7 @@ const latest = launches?.[0];
           <h2>{past?.length}</h2>
           <p>Past Launches</p>
         </div>
-      </div>
+      </div> 
 
       {latest && (
         <div className="latest-launch">
@@ -60,15 +66,23 @@ const latest = launches?.[0];
               alt={latest.name}
               className="patch"
             />
-            <div className="launch-info">
-              <h3>{latest.name}</h3>
-              <p>Date: {formatDate(latest.date_utc)}</p>
-              <p>Flight #{latest.flight_number}</p>
-              <p className={latest.success ? "success" : "failed"}>
-                {latest.success ? "Success" : "Failed"}
-              </p>
-              {latest.details && <p className="details">{latest.details}</p>}
-            </div>
+           <div className="launch-info">
+
+  <h3>{latest.name}</h3>
+  <p>Date: {formatDate(latest.date_utc)}</p>
+  <p>Flight #{latest.flight_number}</p>
+
+  <p className={latest.success ? "success" : "failed"}>
+    {latest.success ? "Success" : "Failed"}
+  </p>
+
+  {latest.details && (
+    <p className="details">{latest.details}</p>
+  )}
+</div>
+
+
+
           </div>
         </div>
       )}
