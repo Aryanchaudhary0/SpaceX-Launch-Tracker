@@ -31,9 +31,9 @@ import Home from "./Pages/Home";
 import Launches from "./Pages/Launches";
 import Rockets from "./Pages/Rockets";
 import LaunchDetail from "./Pages/LaunchDetails";
-import Login from "./pages/Login";
-import Register from "./pages/Register";
-import Favorites from "./pages/Favorites";
+import Login from "./Pages/Login";
+import Register from "./Pages/Register";
+import Favorites from "./Pages/Favorites";
 
 function App() {
   return (
