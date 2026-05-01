@@ -1,14 +1,20 @@
 import { Link, NavLink, useNavigate } from "react-router-dom";
 import { useAuth } from "../Context/AuthContext";
 
+import { useTheme } from "../Context/ThemeContext";
+
 function Navbar() {
   const { user, logout } = useAuth();
   const navigate = useNavigate();
+
+ const { theme, toggleTheme } = useTheme();
 
   const handleLogout = () => {
     logout();
     navigate("/");
   };
+
+  
 
   return (
     <nav className="navbar">
@@ -21,6 +27,10 @@ function Navbar() {
         <li><NavLink to="/rockets">Rockets</NavLink></li>
         {user && <li><NavLink to="/favorites">Favorites</NavLink></li>}
       </ul>
+        <button className="theme-toggle" onClick={toggleTheme}>
+        {theme === "dark" ? "Light Mode" : "Dark Mode"}
+      </button>
+
       <div className="navbar-auth">
         {user ? (
           <>
