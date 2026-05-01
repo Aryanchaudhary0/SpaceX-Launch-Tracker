@@ -9,8 +9,10 @@ const dotenv = require("dotenv");
 dotenv.config();
 
 const app = express();
-
-app.use(cors({ origin: "http://localhost:5173" }));
+app.use(cors({
+  origin: ["http://localhost:5173", "https://spacex-launch-trackerr.netlify.app"],
+  credentials: true
+}));
 app.use(express.json());
 
 app.use("/api/auth", require("./routes/auth"));
