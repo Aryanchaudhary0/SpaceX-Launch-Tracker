@@ -1,6 +1,6 @@
 import { useState, useMemo, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { useAuth } from "../context/AuthContext";
+import { useAuth } from "../Context/AuthContext";
 import { getFavorites, addFavorite, removeFavorite } from "../services/favoriteService";
 import useFetch from "../Hooks/useFetch";
 import { formatDate } from "../Utils/formatDate";
