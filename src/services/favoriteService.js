@@ -1,6 +1,7 @@
 import axios from "axios";
+import API_URL from "../config";
 
-const BASE = "http://localhost:5000/api/favorites";
+const BASE = `${API_URL}/api/favorites`;
 
 export const getFavorites = (token) =>
   axios.get(BASE, { headers: { Authorization: `Bearer ${token}` } });

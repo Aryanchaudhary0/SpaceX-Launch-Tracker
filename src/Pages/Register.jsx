@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import { useAuth } from "../Context/AuthContext";
 import axios from "axios";
+import API_URL from "../config";
 
 function Register() {
   const [username, setUsername] = useState("");
@@ -19,10 +20,14 @@ function Register() {
     setLoading(true);
 
     try {
-      const res = await axios.post("http://localhost:5000/api/auth/register", {
+    /*  const res = await axios.post("http://localhost:5000/api/auth/register", {
         username,
         email,
-        password
+        password */
+        const res = await axios.post(`${API_URL}/api/auth/register`, {
+  username,
+  email,
+  password
       });
       login(res.data.user, res.data.token);
       navigate("/");
