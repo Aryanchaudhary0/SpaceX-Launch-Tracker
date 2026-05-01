@@ -31,7 +31,9 @@ import Home from "./Pages/Home";
 import Launches from "./Pages/Launches";
 import Rockets from "./Pages/Rockets";
 import LaunchDetail from "./Pages/LaunchDetails";
-
+import Login from "./pages/Login";
+import Register from "./pages/Register";
+import Favorites from "./pages/Favorites";
 
 function App() {
   return (
@@ -58,9 +60,10 @@ function App() {
             <Route path="/" element={<Home />} />
             <Route path="/launches" element={<Launches />} />
             <Route path="/rockets" element={<Rockets />} />
-
+        <Route path="/login" element={<Login />} />
+          <Route path="/register" element={<Register />} />
           <Route path="/launches/:id" element={<LaunchDetail />} />
-
+<Route path="/favorites" element={<Favorites />} />
           </Routes>
         </main>
       </div>

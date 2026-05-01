@@ -1,10 +1,14 @@
-import { Link, NavLink } from "react-router-dom";
-
-import { useTheme } from "../Context/ThemeContext";
+import { Link, NavLink, useNavigate } from "react-router-dom";
+import { useAuth } from "../context/AuthContext";
 
 function Navbar() {
-    const { theme, toggleTheme } = useTheme();
-;
+  const { user, logout } = useAuth();
+  const navigate = useNavigate();
+
+  const handleLogout = () => {
+    logout();
+    navigate("/");
+  };
 
   return (
     <nav className="navbar">
@@ -15,11 +19,21 @@ function Navbar() {
         <li><NavLink to="/" end>Home</NavLink></li>
         <li><NavLink to="/launches">Launches</NavLink></li>
         <li><NavLink to="/rockets">Rockets</NavLink></li>
+        {user && <li><NavLink to="/favorites">Favorites</NavLink></li>}
       </ul>
-          <button className="theme-toggle" onClick={toggleTheme}>
-        {theme === "dark" ? "Light Mode" : "Dark Mode"}
-      </button>
-
+      <div className="navbar-auth">
+        {user ? (
+          <>
+            <span className="navbar-user">Hi, {user.username}</span>
+            <button className="auth-btn-sm" onClick={handleLogout}>Logout</button>
+          </>
+        ) : (
+          <>
+            <Link to="/login" className="auth-btn-sm outline">Login</Link>
+            <Link to="/register" className="auth-btn-sm">Register</Link>
+          </>
+        )}
+      </div>
     </nav>
   );
 }
