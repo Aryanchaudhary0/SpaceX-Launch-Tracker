@@ -21,17 +21,19 @@ function Navbar() {
       <Link to="/" className="navbar-logo">
         SpaceX Tracker
       </Link>
+    
       <ul className="navbar-links">
         <li><NavLink to="/" end>Home</NavLink></li>
         <li><NavLink to="/launches">Launches</NavLink></li>
         <li><NavLink to="/rockets">Rockets</NavLink></li>
         {user && <li><NavLink to="/favorites">Favorites</NavLink></li>}
       </ul>
-        <button className="theme-toggle" onClick={toggleTheme}>
-        {theme === "dark" ? "Light Mode" : "Dark Mode"}
-      </button>
+      
 
       <div className="navbar-auth">
+
+         
+
         {user ? (
           <>
             <span className="navbar-user">Hi, {user.username}</span>
@@ -42,7 +44,14 @@ function Navbar() {
             <Link to="/login" className="auth-btn-sm outline">Login</Link>
             <Link to="/register" className="auth-btn-sm">Register</Link>
           </>
-        )}
+      
+      )}
+
+         <button className="theme-toggle" onClick={toggleTheme}>
+        {theme === "dark" ? "Light Mode" : "Dark Mode"}
+      </button>
+
+      
       </div>
     </nav>
   );
