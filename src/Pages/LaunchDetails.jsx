@@ -9,12 +9,11 @@ function LaunchDetail() {
   const navigate = useNavigate();
 
   const { data: launch, loading, error } = useFetch(
-`/spacex-api/v5/launches/${id}`
+`https://spacex-api.fly.dev/v5/launches/${id}`
   );
 
-  const { data: rocket } = useFetch(
-    launch?.rocket ?`/spacex-api/v4/rockets/${launch.rocket}` : null
-  );
+  const { data: rocket } = useFetch(launch?.rocket ? `https://spacex-api.fly.dev/v4/rockets/${launch.rocket}` : null)
+  
 
   if (loading) return <div className="loading">Loading launch details...</div>;
   if (error) return <div className="error">Launch not found!</div>;

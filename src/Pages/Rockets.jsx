@@ -1,9 +1,8 @@
 import useFetch from "../Hooks/useFetch";
 
 function Rockets() {
-  const { data: rockets, loading, error } = useFetch(
-  "/spacex-api/v4/rockets"
-  );
+  const { data: rockets, loading, error } = useFetch("https://spacex-api.fly.dev/v4/rockets")
+
 
   if (loading) return <div className="loading">Loading rockets...</div>;
   if (error) return <div className="error">Something went wrong!</div>;

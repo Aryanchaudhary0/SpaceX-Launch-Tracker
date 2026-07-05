@@ -17,9 +17,9 @@ function Launches() {
   const navigate = useNavigate();
   const { user, token } = useAuth();
 
-  const { data: launches, loading, error } = useFetch(
-"/spacex-api/v5/launches"
-  );
+  const { data: launches, loading, error } = 
+useFetch("https://spacex-api.fly.dev/v5/launches");
+  
 
   useEffect(() => {
     if (token) {

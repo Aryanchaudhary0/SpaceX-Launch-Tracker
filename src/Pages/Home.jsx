@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 function Home() {
 
 const { data: launches, loading, error } = useFetch(
- "/spacex-api/v5/launches"
+"https://spacex-api.fly.dev/v5/launches"
 ); 
 
 const latest = launches
