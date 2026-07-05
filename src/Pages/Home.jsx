@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 function Home() {
 
 const { data: launches, loading, error } = useFetch(
-  "https://api.spacexdata.com/v5/launches"
+ "/spacex-api/v5/launches"
 ); 
 
 const latest = launches

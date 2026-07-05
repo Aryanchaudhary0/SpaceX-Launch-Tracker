@@ -5,6 +5,8 @@ import { getFavorites, addFavorite, removeFavorite } from "../services/favoriteS
 import useFetch from "../Hooks/useFetch";
 import { formatDate } from "../Utils/formatDate";
 
+
+
 function Launches() {
   const [search, setSearch] = useState("");
   const [filter, setFilter] = useState("all");
@@ -16,7 +18,7 @@ function Launches() {
   const { user, token } = useAuth();
 
   const { data: launches, loading, error } = useFetch(
-    "https://api.spacexdata.com/v5/launches"
+"/spacex-api/v5/launches"
   );
 
   useEffect(() => {

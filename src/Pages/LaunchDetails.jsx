@@ -2,16 +2,18 @@ import { useParams, useNavigate } from "react-router-dom";
 import useFetch from "../Hooks/useFetch";
 import { formatDate } from "../Utils/formatDate";
 
+
+
 function LaunchDetail() {
   const { id } = useParams();
   const navigate = useNavigate();
 
   const { data: launch, loading, error } = useFetch(
-    `https://api.spacexdata.com/v5/launches/${id}`
+`/spacex-api/v5/launches/${id}`
   );
 
   const { data: rocket } = useFetch(
-    launch?.rocket ? `https://api.spacexdata.com/v4/rockets/${launch.rocket}` : null
+    launch?.rocket ?`/spacex-api/v4/rockets/${launch.rocket}` : null
   );
 
   if (loading) return <div className="loading">Loading launch details...</div>;

@@ -1,0 +1,5 @@
+[[redirects]]
+  from = "/spacex-api/*"
+  to = "https://api.spacexdata.com/:splat"
+  status = 200
+  force = true
