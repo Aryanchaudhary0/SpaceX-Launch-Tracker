@@ -2,11 +2,11 @@
 import useFetch from "../Hooks/useFetch";
 import { formatDate } from "../Utils/formatDate";
 import { Link } from "react-router-dom";
-
+import API_URL from "../config";
 function Home() {
 
 const { data: launches, loading, error } = useFetch(
-"https://spacex-api.fly.dev/v5/launches"
+`${API_URL}/api/launches` 
 ); 
 
 const latest = launches

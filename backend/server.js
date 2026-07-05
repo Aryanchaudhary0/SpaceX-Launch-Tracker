@@ -14,6 +14,44 @@ app.use(cors({
   credentials: true
 }));
 app.use(express.json());
+const axios = require("axios");
+
+// SpaceX API proxy routes
+app.get("/api/launches", async (req, res) => {
+  try {
+    const response = await axios.get("https://api.spacexdata.com/v5/launches");
+    res.json(response.data);
+  } catch (err) {
+    res.status(500).json({ message: "Failed to fetch launches" });
+  }
+});
+
+app.get("/api/launches/:id", async (req, res) => {
+  try {
+    const response = await axios.get(`https://api.spacexdata.com/v5/launches/${req.params.id}`);
+    res.json(response.data);
+  } catch (err) {
+    res.status(500).json({ message: "Failed to fetch launch" });
+  }
+});
+
+app.get("/api/rockets", async (req, res) => {
+  try {
+    const response = await axios.get("https://api.spacexdata.com/v4/rockets");
+    res.json(response.data);
+  } catch (err) {
+    res.status(500).json({ message: "Failed to fetch rockets" });
+  }
+});
+
+app.get("/api/rockets/:id", async (req, res) => {
+  try {
+    const response = await axios.get(`https://api.spacexdata.com/v4/rockets/${req.params.id}`);
+    res.json(response.data);
+  } catch (err) {
+    res.status(500).json({ message: "Failed to fetch rocket" });
+  }
+});
 
 app.use("/api/auth", require("./routes/auth"));
 app.use("/api/favorites", require("./routes/favorites"));

@@ -1,7 +1,8 @@
 import useFetch from "../Hooks/useFetch";
+import API_URL from "../config";
 
 function Rockets() {
-  const { data: rockets, loading, error } = useFetch("https://spacex-api.fly.dev/v4/rockets")
+  const { data: rockets, loading, error } = useFetch(`${API_URL}/api/rockets`);
 
 
   if (loading) return <div className="loading">Loading rockets...</div>;

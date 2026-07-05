@@ -4,7 +4,7 @@ import { useAuth } from "../Context/AuthContext";
 import { getFavorites, addFavorite, removeFavorite } from "../services/favoriteService";
 import useFetch from "../Hooks/useFetch";
 import { formatDate } from "../Utils/formatDate";
-
+import API_URL from "../config";
 
 
 function Launches() {
@@ -18,7 +18,7 @@ function Launches() {
   const { user, token } = useAuth();
 
   const { data: launches, loading, error } = 
-useFetch("https://spacex-api.fly.dev/v5/launches");
+useFetch(`${API_URL}/api/launches`);
   
 
   useEffect(() => {
